@@ -44,7 +44,7 @@ if uploaded_file and question and openai_api_key:
     )
         # Display response
         st.success("Response:")
-        st.write(respuesta = stream.choices[0].message.content)
+        st.write(stream.choices[0].message.content)
     except Exception as e:
         st.error(f"Error: {e}")
 
