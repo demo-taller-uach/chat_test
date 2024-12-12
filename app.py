@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+from openai import OpenAI
 
 # App title
 st.title("Chat with a Research Paper")
