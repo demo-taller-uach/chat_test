@@ -9,7 +9,8 @@ uploaded_file = st.file_uploader("Upload your research paper (text format only)"
 
 # API Key input
 openai_api_key = st.text_input("Enter your OpenAI API key", type="password")
-
+# Create an OpenAI client.
+client = OpenAI(api_key=openai_api_key)
 # Question input
 question = st.text_area("Ask a question about the paper")
 
