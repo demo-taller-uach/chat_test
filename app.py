@@ -24,21 +24,25 @@ if uploaded_file and question and openai_api_key:
     # Construct the prompt
     prompt = f"Here's a research article:\n\n{article}\n\nBased on this article, please answer the following question:\n\n{question}"
 
+    
+
     try:
         # Configure OpenAI API
         openai.api_key = openai_api_key
 
         # Generate response
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=prompt,
-            max_tokens=500,
-            temperature=0.7,
-        )
-
+        stream = client.chat.completions.create(
+        model="gpt-4o-mini",  
+        messages=[
+            {"role": "system", "content": "You are an assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=800,
+        temperature=0,
+    )
         # Display response
         st.success("Response:")
-        st.write(response.choices[0].text.strip())
+        st.write(respuesta = stream.choices[0].message.content)
     except Exception as e:
         st.error(f"Error: {e}")
 
